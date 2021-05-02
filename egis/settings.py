@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
+    'leaflet',
     'core',
 ]
 
@@ -127,3 +128,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Leaflet settings
+
+LEAFLET_CONFIG = {
+    'DEFAULT_CENTER': (-7.144983, -34.860527), # João Pessoa, PB (Defina as coordenadas da sua cidade)
+    'DEFAULT_ZOOM': 12,
+    'MIN_ZOOM': 12,
+    'MAX_ZOOM': 18,
+    'TILES': [
+        (
+            'Ruas', 
+            'https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=' + os.environ.get('MAPTILER_KEY'),
+            {'attribution': '\u003ca href=\"https://www.maptiler.com/copyright/\" target=\"_blank\"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e'}
+        )
+    ]
+}

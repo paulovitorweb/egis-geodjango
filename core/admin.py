@@ -1,8 +1,9 @@
 from django.contrib.gis import admin
-from django.contrib.gis.geos import Point
+from leaflet.admin import LeafletGeoAdmin
 from .models import Escola
 
-@admin.register(Escola)
+admin.site.register(Escola, LeafletGeoAdmin)
+"""
 class EscolaAdmin(admin.OSMGeoAdmin):
 
     # Centro do mapa
@@ -14,3 +15,4 @@ class EscolaAdmin(admin.OSMGeoAdmin):
     default_lon, default_lat = pnt.coords
 
     default_zoom = 12
+"""
